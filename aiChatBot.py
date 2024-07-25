@@ -1,7 +1,8 @@
 import google.generativeai as genai
+from decouple import config
 
 def aiCalling(text):
-    genai.configure(api_key="AIzaSyBBbcF7Ph1-K6mHZa1VO5lOYAfV9vHc-VA")
+    genai.configure(api_key=config("AI_KEY"))
     model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(text)
     return response.text
